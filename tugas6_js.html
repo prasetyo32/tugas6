@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <style>
+    .card {
+      margin: 2rem;
+    }
+    .card-header {
+      background-color: #334f55;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    table, th, td {
+      border: 1px solid lightblue;
+    }
+    /* responsive */
+    @media screen and (max-width: 645px) {
+      .card-header {
+        background-color: #3e6833;
+        font-size: 0.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+  </style>
+  <title>Informasi Bencana Gempa Bumi by R.P</title>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      INFORMASI BENCANA GEMPA BUMI
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <table class="table border-primary scroll" cellpadding="10" cellspacing="0">
+          <thead>
+            <tr bgcolor="cyan">
+              <th>NO</th>
+              <th colspan="2">LOKASI</th>
+              <th>SKALA RICHTER</th>
+              <th colspan="4">DAMPAK</th>
+            </tr>
+          </thead>
+          <tbody id="data">
+            <script language="javascript">
+              let angka = 1;
+              class Gempa {
+                constructor(lokasi, skala) {
+                  this.lokasi = lokasi;
+                  this.skala = skala;
+                }
+                dampak() {
+                  if (this.skala <= 2) {
+                    this.daGem = 'Tidak terasa';
+                  } else if (this.skala > 2 && this.skala <= 4) {
+                    this.daGem = 'Bangunan retak-retak';
+                  } else if (this.skala > 4 && this.skala <= 6) {
+                    this.daGem = 'Bangunan roboh';
+                  } else if (this.skala > 6) {
+                    this.daGem = 'Bangunan roboh dan berpotensi tsunami';
+                  } else {
+                    this.daGem = '';
+                  }
+                  return this.daGem;
+                }
+                infoGempa() {
+                  document.write(`
+                    <tr>
+                    <td align="center">${angka++}</td>
+                    <td colspan="2">${this.lokasi}</td>
+                    <td align="center">${this.skala}</td>
+                    <td colspan="4">${this.dampak()}</td>
+                    </tr>
+                    `);
+                }
+              }
+              g1 = new Gempa('Selat Sunda', 2);
+              g2 = new Gempa('Samudra Hindia', 5);
+              g3 = new Gempa('Sebelah Selatan Nusa Tenggara Timur', 3);
+              g4 = new Gempa('Perairan Selat Malaka', 4);
+              g5 = new Gempa('Sebelah Utara Brunai Darussalam', 6);
+              g6 = new Gempa('Singapura', 8);
+              g7 = new Gempa('Aceh', 2);
+              g8 = new Gempa('Cirebon', 3);
+              g9 = new Gempa('China', 7);
+              g10 = new Gempa('Bogor', 1);
+
+              g1.infoGempa(), g2.infoGempa(), g3.infoGempa(), g4.infoGempa(), g5.infoGempa(), g6.infoGempa(), g7.infoGempa(), g8.infoGempa(), g9.infoGempa(), g10.infoGempa()
+            </script>
+          </tbody>
+        </table>
+      </p>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
